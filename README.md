@@ -4,10 +4,10 @@
 ### Autoevaluacion: 5.0
 | Coevaluación  | Nota   |
 |--------------:|------:|
-|Laura Vanessa Tamayo Perez   | 5.0|
+|Laura Vanessa Tamayo Pérez   | 5.0|
 |Marcos Esteban Vargas Avella     | 5.0|
 
-## Laura Vanessa Tamayo Perez - código: 201912202
+## Laura Vanessa Tamayo Pérez - código: 201912202
 ### Autoevaluacion: 5.0
 | Coevaluación  | Nota   |
 |--------------:|------:|
