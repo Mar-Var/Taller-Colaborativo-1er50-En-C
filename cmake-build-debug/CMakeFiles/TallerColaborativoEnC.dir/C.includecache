@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Yasser Cristancho/CLionProjects/Taller-Colaborativo-1er50-En-C/main.c
+stdio.h
+-
+string.h
+-
+ctype.h
+-
+
