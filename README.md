@@ -7,12 +7,12 @@
 |Laura Vanessa Tamayo Perez   | 5.0|
 |Marcos Esteban Vargas Avella     | 5.0|
 
-##Laura Vanessa Tamayo Perez - código:
-###Autoevaluacion: 
+##Laura Vanessa Tamayo Perez - código: 201912202
+###Autoevaluacion: 5.0
 | Coevaluación  | Nota   |
 |--------------:|------:|
-|Marcos Esteban Vargas Avella     | |
-|Yasser Fernando Cristancho Diaz    | |
+|Marcos Esteban Vargas Avella     | 5.0 |
+|Yasser Fernando Cristancho Diaz    | 5.0 |
 
 ##Marcos Esteban Vargas Avella - código:
 ###Autoevaluacion:
