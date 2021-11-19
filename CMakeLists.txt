@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(TallerColaborativoEnC C)
+project(TallerColaborativoEnC)
 
 set(CMAKE_C_STANDARD 11)
 

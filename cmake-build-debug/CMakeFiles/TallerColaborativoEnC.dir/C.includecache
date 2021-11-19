@@ -9,12 +9,10 @@
 L:/Trabajos/Taller-Colaborativo-1er50-En-C/main.c
 stdio.h
 -
-stdlib.h
--
 string.h
 -
-stdbool.h
--
 ctype.h
+-
+stdlib.h
 -
 
