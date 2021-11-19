@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>a
+#include <stdlib.h>
+#include <stdbool.h>
 
 
 void validarCorreo();
 
-void contarPalabras();
+void contarPalabras(char *str1,char *str2 );
 
-void eliminarRepetidos();
+void eliminarRepetidos(char *str1);
 
 void interseccion();
 
@@ -16,7 +17,7 @@ void borrarCaracteres();
 
 void llenarCaracteres();
 
-void cuentaANuevo();
+void cuentaANuevo(const char *hora);
 
 void contarVocales();
 
@@ -25,6 +26,7 @@ void buscarCadenaCaracteres();
 void convertiraPropio();
 
 int main() {
+
     char *menu = "\n<<<<<<<<<Taller Colaborativo en C>>>>>>>>\n\n"
                  "1.Convertir cadena a nombre propio\n"
                  "2. Buscar cadena de caracteres\n"
@@ -39,19 +41,28 @@ int main() {
                  "0. Salir\n\n"
                  "Dijite una opcion\n";
     char opcion;
+
+    char *name[500];
     do{
         printf(menu);
         fflush(stdin);
         opcion = getchar();
 
         switch(opcion){
-            case '1': convertiraPropio(); //Laura
+            case '1':
+                convertiraPropio(); //Laura
                 break;
             case '2': buscarCadenaCaracteres();//Laura
                 break;
             case '3': contarVocales();//Laura
                 break;
-            case '4': cuentaANuevo();//Marcos
+            case '4':
+                printf("Ingrese la hora actual en formato HH:MM");
+                char* horita[50];
+                fflush(stdin);
+                fgets(horita,50,stdin);
+                const char* hora =horita;
+                cuentaANuevo(hora);//Marcos
                 break;
             case '5': llenarCaracteres();//Yasser
                 break;
@@ -59,9 +70,27 @@ int main() {
                 break;
             case '7': interseccion();//Yasser
                 break;
-            case '8': eliminarRepetidos();//Marcos
+
+
+
+            case '8':
+                printf("ingrese la cadena a operar");
+                char *str1_[200];
+                fflush(stdin);
+                fgets(str1_,200,stdin);
+
+                eliminarRepetidos(str1_);//Marcos
                 break;
-            case '9': contarPalabras();//Marcos
+            case '9':
+                printf("Ingrese la cadena principal");
+                char *str1[200];
+                fflush(stdin);
+                fgets(str1,200,stdin);
+                printf("Ingrese la palabra que desea saber cuantas veces se repite");
+                char *str2[200];
+                fflush(stdin);
+                fgets(str2,200,stdin);
+                contarPalabras(str1,str2);//Marcos
                 break;
             case 'x': validarCorreo();//Marcos
                 break;
@@ -260,7 +289,36 @@ void contarVocales() {
 
 }
 
-void cuentaANuevo() {
+void cuentaANuevo(const char* hora) {
+
+    int cantidadMinutosRestantes;
+    int cont=0;
+    for(int i=0;i<5;i++){
+        if(hora[i]==':'){
+            cont++;
+        }
+    }
+
+    if(cont==1){
+        int i1, i2;
+        if (2 == sscanf(hora,
+                        "%d%*[^0123456789]%d",
+                        &i1,
+                        &i2))
+        {
+           if(i1>=24 ||i1<0 || i2<0 || i2>=60 ){
+                printf("Los valores asignados no son validos");
+            }else{
+                cantidadMinutosRestantes=1440-((i1*60)+i2);
+                printf("la cantidad de minutos restantes es  : %d minutos ",i1,i2,cantidadMinutosRestantes);
+            }
+        }
+
+    }else{
+        printf("El formato ingresado no corresponde");
+    }
+
+
 
 }
 
@@ -373,14 +431,62 @@ void interseccion() {
 
 }
 
-void eliminarRepetidos() {
+void eliminarRepetidos(char *str1) {
+    char c ,aux;
+    int k=0;
+    char resultado[200]="";
+    for (int j = 0; j < strlen(str1); j++ )  {
+        str1[j] = tolower( str1[j] );
+    }
+    for (int i = 0; i < strlen(str1); ++i) {
+        if(!strchr(resultado,str1[i]))
+            resultado[k++]=str1[i];
+    }
+    resultado[k]='\0';
+    printf("la cadena final sin caracteres repetidos es %s",resultado);
+
+/*    for (int i = 0; i < strlen(str1); ++i) {
+        c=str1[i];
+        for (int j = i+1; j < strlen(str1); ++j) {
+            if(str1[j]==str1[i]){
+                str1[j]="";
+                printf(str1);
+            }
+            if(j+1==strlen(str1)) break;
+        }
+    }*/
+
 
 }
 
-void contarPalabras() {
+void contarPalabras(char *str1,char *str2) {
+    int len1= strlen(str1);
+    int len2 = strlen(str2);
+    int j=0;
+    int count=0;
+    char c = str2[0];
+    //convertir Cadena larga a minusculas
+    for (int i = 0; i < len1; i++ )  {
+        str1[i] = tolower( str1[i] );
+    }
+    //convertir palabra a minusculas
+    for (int i = 0; i < len2; i++ )  {
+        str2[i] = tolower( str2[i] );
+    }
+    while (j<len1){
+        if ( str1[j]== c){
+            if(strncmp(&str1[j],str2,len2)==0){
+                count++;
+            }
+        }
+        j++;
+    }
+
+    printf("la cantidad de veces que se repite la palabra %s es %i vez/veces ",str2,count);
 
 }
 
 void validarCorreo() {
+
 
 }

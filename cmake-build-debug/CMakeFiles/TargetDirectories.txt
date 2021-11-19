@@ -1,3 +1,3 @@
-L:/Trabajos/Taller-Colaborativo-1er50-En-C/cmake-build-debug/CMakeFiles/TallerColaborativoEnC.dir
-L:/Trabajos/Taller-Colaborativo-1er50-En-C/cmake-build-debug/CMakeFiles/edit_cache.dir
-L:/Trabajos/Taller-Colaborativo-1er50-En-C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/USUARIO/Desktop/Nueva carpeta (2)/Taller-Colaborativo-1er50-En-C/cmake-build-debug/CMakeFiles/TallerColaborativoEnC.dir
+C:/Users/USUARIO/Desktop/Nueva carpeta (2)/Taller-Colaborativo-1er50-En-C/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/USUARIO/Desktop/Nueva carpeta (2)/Taller-Colaborativo-1er50-En-C/cmake-build-debug/CMakeFiles/rebuild_cache.dir

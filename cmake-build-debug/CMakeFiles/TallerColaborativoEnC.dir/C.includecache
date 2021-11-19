@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-L:/Trabajos/Taller-Colaborativo-1er50-En-C/main.c
+C:/Users/USUARIO/Desktop/Nueva carpeta (2)/Taller-Colaborativo-1er50-En-C/main.c
 stdio.h
 -
 string.h
@@ -14,5 +14,7 @@ string.h
 ctype.h
 -
 stdlib.h
+-
+stdbool.h
 -
 
