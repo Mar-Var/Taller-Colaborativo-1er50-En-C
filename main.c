@@ -36,8 +36,7 @@ int main() {
                  "6. Borrar caracteres\n"
                  "7. Interseccion\n"
                  "8. Eliminar repetidos\n"
-                 "9. Contar palabras\n"
-                 "x. Validar correo electronico\n"
+                 "9. Validar correo electronico\n"
                  "0. Salir\n\n"
                  "Dijite una opcion\n";
     char opcion;
@@ -79,18 +78,8 @@ int main() {
 
                 eliminarRepetidos(str1_);//Marcos
                 break;
+
             case '9':
-                printf("Ingrese la cadena principal");
-                char *str1[200];
-                fflush(stdin);
-                fgets(str1,200,stdin);
-                printf("Ingrese la palabra que desea saber cuantas veces se repite");
-                char *str2[200];
-                fflush(stdin);
-                fgets(str2,200,stdin);
-                contarPalabras(str1,str2);//Marcos
-                break;
-            case 'x':
             printf("Ingrese una direccion de correo electronico");
             char* email[300];
             fflush(stdin);
@@ -287,11 +276,12 @@ void cuentaANuevo(const char* hora) {
                         &i1,
                         &i2))
         {
+
            if(i1>=24 ||i1<0 || i2<0 || i2>=60 ){
                 printf("Los valores asignados no son validos");
             }else{
                 cantidadMinutosRestantes=1440-((i1*60)+i2);
-                printf("la cantidad de minutos restantes es  : %d minutos ",i1,i2,cantidadMinutosRestantes);
+                printf("la cantidad de minutos restantes es  : %d minutos ",cantidadMinutosRestantes);
             }
         }
 
@@ -439,6 +429,7 @@ void eliminarRepetidos(char *str1) {
 
 }
 
+/*
 void contarPalabras(char *str1,char *str2) {
     int len1= strlen(str1);
     int len2 = strlen(str2);
@@ -450,9 +441,10 @@ void contarPalabras(char *str1,char *str2) {
         str1[i] = tolower( str1[i] );
     }
     //convertir palabra a minusculas
-    for (int i = 0; i < len2; i++ )  {
-        str2[i] = tolower( str2[i] );
+    for (int k = 0; k < len2; k++ )  {
+        str2[k] = tolower( str2[k] );
     }
+
     while (j<len1){
         if ( str1[j]== c){
             if(strncmp(&str1[j],str2,len2)==0){
@@ -462,9 +454,10 @@ void contarPalabras(char *str1,char *str2) {
         j++;
     }
 
-    printf("la cantidad de veces que se repite la palabra %s es %i vez/veces ",str2,count);
+    printf("la cantidad de veces que se repite la palabra ' %s ' es %d vez/veces ",str2,count);
 
 }
+*/
 
 void validarCorreo(char *email) {
     int contadorAnterior =0,contadorPosterior=0,contadorPostPunto=0,contadorPostPostPunto=0,contadorArroba=0,contadorPuntos=0;
