@@ -15,8 +15,8 @@
 |Yasser Fernando Cristancho Diaz    | 5.0 |
 
 ## Marcos Esteban Vargas Avella - código:
-### Autoevaluacion:
+### Autoevaluacion: 5.0
 | Coevaluación  | Nota   |
 |--------------:|------:|
-|Laura Vanessa Tamayo Pérez     | |
-|Yasser Fernando Cristancho Diaz    | |
+|Laura Vanessa Tamayo Pérez     | 5.0 |
+|Yasser Fernando Cristancho Diaz    | 5.0 |
