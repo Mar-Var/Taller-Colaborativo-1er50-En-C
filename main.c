@@ -344,20 +344,14 @@ void borrarCaracteres() {
 
     int index = 0;
     for (int i = 0; i < strlen(input); i++) {
-        if ( (tolower((unsigned char) input[i]) != tolower((unsigned char) charc)) && (input[i] != '\0' && charc !='\0') ){
+        char ci = tolower(input[i]), c = tolower(charc);
+        if ( ci != c ){
             aux[index] = input[i];
             index++;
         } else {}
     }
 
-    printf("Cadena final: ");
-    for (int i = 0; i < strlen(aux); i++) {
-        if ( aux[i] != '\0' ){
-            printf("%c", aux[i]);
-        }
-    }
-    printf("\n");
-
+    printf("Cadena final: %s \n", aux);
 }
 
 int nCharsRepe(char chain[], char c) {
@@ -384,8 +378,9 @@ void interseccion() {
     int index = 0;
     for (int i = 0; i < strlen(chain_1); i++) {
         for (int j = 0; j < strlen(chain_2); j++) {
-            if ( tolower((unsigned char) chain_1[i]) == tolower((unsigned char) chain_2[j]) ) {
-                char rep = chain_1[i];
+            char c1 = tolower(chain_1[i]), c2 = tolower(chain_2[j]);
+            if ( c1 == c2 ) {
+                char rep = c1;
 
                 if ( nCharsRepe(aux, rep) == 0 ) {
                     aux[index] = rep;
