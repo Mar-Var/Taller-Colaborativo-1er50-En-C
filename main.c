@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 
-void validarCorreo();
+void validarCorreo(char *email);
 
 void contarPalabras(char *str1,char *str2 );
 
@@ -71,8 +71,6 @@ int main() {
             case '7': interseccion();//Yasser
                 break;
 
-
-
             case '8':
                 printf("ingrese la cadena a operar");
                 char *str1_[200];
@@ -92,7 +90,12 @@ int main() {
                 fgets(str2,200,stdin);
                 contarPalabras(str1,str2);//Marcos
                 break;
-            case 'x': validarCorreo();//Marcos
+            case 'x':
+            printf("Ingrese una direccion de correo electronico");
+            char* email[300];
+            fflush(stdin);
+            fgets(email,300,stdin);
+            validarCorreo(email);//Marcos
                 break;
         }
     } while (opcion!='0');
@@ -101,48 +104,29 @@ int main() {
 }
 
 char* obtenerString(int chararacter){
-    /*
-     muchas operaciones se hacen con lso punteros char* asi que en vez de sufrir casteando
-     esta funcion lo va haciendo por nosotros letra por letra
-     el codigo lo encontre en
-     https://es.stackoverflow.com/questions/31601/guardar-cadena-de-caracteres-en-c
-     creditos a quien corresponda ;)
-     */
 
     fflush(stdin);
     char* string;
     string = 0;
     int tamanio = 0;
     do{
-        if (chararacter) {// 1 = true, significa que se busca unicamente 1 caracter
+        if (chararacter) {
             printf("Por favor ingrese el caracter que desea utilizar:\n");
-            /*realloc retorna un nuevo array con el contenido existente en el array que se
-              envio en el 1 parametro y del tamaño que se le envio en el 2 parametro
-            */
+
             string = (char*)realloc(string,tamanio + 1);
 
-            //obtenemos el codigo ascii del caracter ingresado
+
             int c = getchar();
 
-            /*transformamos el codigo ascii a su respectivo caracter y se ingresa en la posicion
-            correspondiente*/
             string[tamanio] = (char)c;
 
-            /*los array para poder ser inpresons mediante el printf deben de tener en su
-             ultima casilla un \0 el cual conseguimos al designarle el 0 a la casilla, esto
-             lo interpreta el computador como que se finalizo exitosamente la impresion del
-             array*/
+
             string[tamanio+1] = 0;
-        }else {// 0 = false, significa que busca una cadena de caracteres
+        }else {
             printf("Por favor ingrese la cadena de caracteres que desea utilizar:\n");
             fflush(stdout);
             while( 1 ) {
-                /*aqui repetiremos el proceso anterior las veces necesarias para que el array
-                 contenga todos los caracteres inscritos, la funcion realloc estara
-                 constanmente retornando un nuevo array con el contenido que ya se tenia y
-                 una casilal adicional en blanco la que sera rellenada con el caracter que se
-                 esta procesando
-                 */
+
                 string = (char*)realloc(string,tamanio + 1);
                 int c = getchar();
                 if( c == 10 ){
@@ -153,10 +137,7 @@ char* obtenerString(int chararacter){
                 tamanio++;
             }
         }
-        /*Dado que no se puede procesar el espacio como un caracter la primera casilla queda
-         con el valor 0, por ende al presentarse este valor en esta casilla sabemos que el
-         array se encuentra "vacio"
-         */
+
         if ((int)(string[0])==0) {
             printf("Lo lamento pero no podemos procesar un espacio en blanco como una cadena\n");
             printf("Presiona enter para ingresar una cadena\n");
@@ -389,7 +370,7 @@ void borrarCaracteres() {
 
 }
 
-int nCharsRepe(char chain[], char c) {//Devuelve el numero de veces que existe un caracter en la cadena.
+int nCharsRepe(char chain[], char c) {
     int cont = 0;
     for (int i = 0; i < strlen(chain); ++i) {
         if ( c == chain[i] ) {
@@ -414,7 +395,6 @@ void interseccion() {
     for (int i = 0; i < strlen(chain_1); i++) {
         for (int j = 0; j < strlen(chain_2); j++) {
             if ( tolower((unsigned char) chain_1[i]) == tolower((unsigned char) chain_2[j]) ) {
-                //printf("coincide => %c = %c \n", chain_1[i], chain_2[j]);
                 char rep = chain_1[i];
 
                 if ( nCharsRepe(aux, rep) == 0 ) {
@@ -486,7 +466,75 @@ void contarPalabras(char *str1,char *str2) {
 
 }
 
-void validarCorreo() {
+void validarCorreo(char *email) {
+    int contadorAnterior =0,contadorPosterior=0,contadorPostPunto=0,contadorPostPostPunto=0,contadorArroba=0,contadorPuntos=0;
+
+    int longitud= strlen(email);
+
+    //Fase de Validacion de email
+    if(email[longitud-2]=='@'||email[0]=='@'|| email[longitud-2]=='.'||email[0]=='.'){
+        printf("Formato de email invalido");
+    }else{
+        for (int i=0;i<strlen(email);i++){
+            if(((email[i]=='@')&&(email[i+1]=='@'))||((email[i]=='@')&&(email[i+1]=='.'))||((email[i]=='.')&&(email[i+1]=='@'))){
+                printf("Formato de email invalido");
+                break;
+            }else{
+            }
+        }
+        for(int i=0;i<strlen(email);i++){
+            if(email[i]=='@') contadorArroba++;
+        }
+        if(contadorArroba==0)printf("Formato de email invalido. Debe conterner minimo una @");
+    }
+
+    // Fase de Validacion 2
+    int j=0,k;
+    for(j=0;j<longitud;j++){
+        contadorAnterior++;
+        if(email[j]=='@'){
+            j=j;
+            break;
+        }
+       // marcosvargas97@gmail.com
+    }
+    k=j;
+    for (k; k < longitud; k++) {
+        if(email[k]=='.') contadorPuntos++;
+    }
+    for(j=j;j<longitud;j++){
+
+        if(email[j]=='.'){
+            j=j;
+            break;
+        }
+        contadorPosterior++;
+    }
+    for(j=j+1;j<longitud;j++){
+        contadorPostPunto++;
+        if(email[j]=='.'){
+            j=j;
+            break;
+        }
+    }
+    if(contadorPuntos==2){
+        for(j=j;j=='\0';j++){
+            contadorPostPostPunto++;
+        }
+        if(contadorPostPostPunto<0)printf("Debe tener mas de 1 caracteres despues  de el anterior punto que le seguia a la @");
+
+    }
+    if (contadorPuntos>2) { printf("El formato del correo es invalido"); }else{
+        if(contadorAnterior<3)printf("Debe tener mas de 2 caracteres antes de el @");
+        else if(contadorPosterior<2)printf("Debe tener mas de 2 caracteres despues de el @ y antes del siguiente punto");
+        else if(contadorPuntos==0)printf("Debe tener minimo 1 punto despues del @");
+        else if(contadorPostPunto<3)printf("Debe tener mas de 2 caracteres antes del primer punto despues del @");
+
+        else{
+            printf("El correo que ha ingresado es valido");
+        }
+    }
+
 
 
 }
